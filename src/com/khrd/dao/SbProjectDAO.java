@@ -116,7 +116,35 @@ public class SbProjectDAO {
 		return -1;
 	}
 
-	
+	public int updateSbProject(Connection conn, SbProject sb) {
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = "update sb_project "+ 	
+						"set sbName = ?," + 
+						"sbContent = ?," + 
+						"sbStart = ?," + 
+						"sbStop = ?," + 
+						"sbProgress = ?" + 
+						"where sbNo = ?";	
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, sb.getSbName());
+			pstmt.setString(2, sb.getSbContent());
+			pstmt.setTimestamp(3, new Timestamp(sb.getSbStart().getTime()));
+			pstmt.setTimestamp(4, new Timestamp(sb.getSbStop().getTime()));
+			pstmt.setString(5, sb.getSbProgress());
+			pstmt.setInt(6, sb.getSbNo());
+			
+			return pstmt.executeUpdate();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(pstmt);
+		}
+		
+		
+		return -1;
+	}
 	
 	
 	

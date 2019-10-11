@@ -31,8 +31,8 @@
 		</tr>
 	</table>
 	<p>
-		<a href = "${pageContext.request.contextPath }/update.do">수정</a>
-		<a href = "${pageContext.request.contextPath }/delete.do">삭제</a>
+		<a href = "${pageContext.request.contextPath }/update.do?sbNo=${sb.sbNo}">수정</a>
+		<a href = "${pageContext.request.contextPath }/delete.do?sbNo=${sb.sbNo}">삭제</a>
 		<a href = "${pageContext.request.contextPath }/list.do">목록으로 돌아가기</a>
 	</p>
 </body>
